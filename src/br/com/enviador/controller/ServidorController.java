@@ -98,8 +98,12 @@ public class ServidorController {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				if(mensagem.contains("setNome") && mensagem.length() >= "setNome".length()+2){
-					System.out.println("Novo nome é: "+mensagem.substring("setNome(".length(), mensagem.length()-1 ));
+					cliente.setNome(mensagem.substring("setNome(".length(), mensagem.length()-1 ));
+					System.out.println("Novo nome é: "+cliente.getNome());
 				}
+				
+				System.out.println(cliente.getNome()+">>"+mensagem);
+				
 				
 			}
 		});
