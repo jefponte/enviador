@@ -1,6 +1,8 @@
 package br.com.enviador.controller;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import br.com.enviador.model.Cliente;
+import br.com.enviador.view.JanelaAdm;
 
 
 public class ServidorController {
@@ -112,18 +115,18 @@ public class ServidorController {
 	public void iniciaAdministrador(){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				System.out.println("Administrador Iniciando...");
+				final JanelaAdm janela = new JanelaAdm();
+				janela.setVisible(true);
 				
-				Scanner leitor = new Scanner(System.in);
-				String comando = "";
-				do{
-					System.out.println("Digite um comando ao servidor: ");
-					comando = leitor.nextLine();
-					System.out.println("Você digitou: "+comando);
+				janela.getBtnEnviar().addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
 					
-				}while(!comando.equals("encerrar"));
-				System.out.println("Encerrando servidor.");
-				System.exit(0);
+						String comando = janela.getBtnEnviar().getText();
+						janela.getBtnEnviar().setText("");
+						
+						
+					}
+				});
 			}
 		});
 		//Digite um comando para o servidor
