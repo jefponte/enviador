@@ -15,11 +15,16 @@ public class JanelaAdm extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	
+	public JTextField getTextField(){
+		return this.textField;
+	}
 	private JButton btnEnviar;
 
 	public JButton getBtnEnviar(){
 		return this.btnEnviar;
 	}
+	
 	
 	public JanelaAdm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
