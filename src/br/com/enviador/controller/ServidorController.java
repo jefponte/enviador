@@ -97,6 +97,9 @@ public class ServidorController {
 	public void processandoMensagens(final String mensagem, final Cliente cliente){
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				if(mensagem.contains("setNome") && mensagem.length() >= "setNome".length()+2){
+					System.out.println("Novo nome é: "+mensagem.substring("setNome(".length(), mensagem.length()-1 ));
+				}
 				
 			}
 		});
