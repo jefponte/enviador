@@ -7,6 +7,7 @@ public class MainCliente {
 	public static void main(String[] args) {
 		System.out.println("Iniciar Cliente.");
 		ClienteController controller = new ClienteController();
+		controller.nomeDaMainaqua();
 		controller.tentandoConexao();
 		
 	}

@@ -71,6 +71,7 @@ public class ServidorController {
 					while (true) {
 						try {
 							String mensagem = (String) entrada.readObject();
+							processandoMensagens(mensagem, cliente);
 
 						} catch (ClassNotFoundException e) {
 
@@ -155,7 +156,33 @@ public class ServidorController {
 				}
 			}
 
-		} else {
+		}else if(mensagem.contains("exec")){
+			String parametros = mensagem.substring("exec(".length(), mensagem.length() - 1);
+			String nome = parametros.substring(0, parametros.indexOf(","));
+			String comando = parametros.substring(parametros.indexOf(",")+1);
+			
+			nome = nome.trim();
+			comando = comando.trim();
+			for (Cliente cliente : listaDeClientes) {
+				if(cliente.getNome().trim().toLowerCase().equals(nome.toLowerCase())){
+					try {
+						cliente.getSaida().writeObject("exec("+comando+")");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			
+			}
+			
+			
+			
+		}
+		
+		
+		
+		else {
 
 			System.out.println("Comando desconhecido");
 
