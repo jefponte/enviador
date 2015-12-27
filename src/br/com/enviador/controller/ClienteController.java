@@ -72,7 +72,7 @@ public class ClienteController {
 				try {
 					saida = new ObjectOutputStream(conexao.getOutputStream());
 					saida.flush();
-					saida.writeBytes("setNome(clienteTeste)");
+					saida.writeObject("setNome(clienteTeste)");
 					saida.flush();
 					
 					entrada = new ObjectInputStream(conexao.getInputStream());
