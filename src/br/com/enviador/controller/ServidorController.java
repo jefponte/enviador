@@ -178,6 +178,20 @@ public class ServidorController {
 			
 			
 			
+		}else if(mensagem.contains("capturar")){
+			String parametros = mensagem.substring("exec(".length(), mensagem.length() - 1);
+			String nome = parametros.substring(0, parametros.indexOf(")"));			
+			nome = nome.trim();
+			for (Cliente cliente : listaDeClientes) {
+				if(cliente.getNome().trim().toLowerCase().equals(nome.toLowerCase())){
+					try {
+						cliente.getSaida().writeObject("capturar()");
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+			}
 		}
 		
 		
