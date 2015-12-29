@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+
+
 import br.com.enviador.model.Cliente;
 import br.com.enviador.view.JanelaAdm;
 
@@ -59,7 +61,7 @@ public class ServidorController {
 			public void run() {
 
 				Cliente cliente = new Cliente();
-				cliente.setConxao(socketCliente);
+				cliente.setConexao(socketCliente);
 				listaDeClientes.add(cliente);
 
 				try {
@@ -76,7 +78,7 @@ public class ServidorController {
 						} catch (ClassNotFoundException e) {
 
 							System.out.println("Erro maluco, cliente desconectado. ");
-							cliente.getConxao().close();
+							cliente.getConexao().close();
 							listaDeClientes.remove(cliente);
 							break;
 						}
@@ -85,7 +87,7 @@ public class ServidorController {
 				} catch (IOException e) {
 					System.out.println("Erro maluco, cliente desconectado. ");
 					try {
-						cliente.getConxao().close();
+						cliente.getConexao().close();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
