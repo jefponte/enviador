@@ -46,7 +46,7 @@ public class ClienteController {
 					System.out.println("Tentativa "+tentativa);
 					
 					try {
-						Socket conexao = new Socket("179.180.139.229", 37389);
+						Socket conexao = new Socket("localhost", 37389);
 						processandoConexao(conexao);
 						break;
 					} catch (UnknownHostException e) {
@@ -78,7 +78,7 @@ public class ClienteController {
 		
 	}
 	public void processandoConexao(final Socket conexao){
-		cliente.setConxao(conexao);
+		this.cliente.setConexao(conexao);
 		Thread processando = new Thread(new Runnable() {
 			
 			@Override
