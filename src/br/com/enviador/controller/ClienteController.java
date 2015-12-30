@@ -19,7 +19,7 @@ import br.com.enviador.model.Cliente;
 public class ClienteController {
 
 
-	private Cliente cliente;
+	private Cliente cliente; //s
 	
 	public void nomeDaMainaqua(){
 		this.cliente = new Cliente();
