@@ -8,6 +8,7 @@ public class MainServidor {
 		
 		ServidorController controller = new ServidorController();
 		controller.iniciaServico();
+		controller.iniciaServicoCaptura();
 		controller.iniciaAdministrador();
 		
 		
