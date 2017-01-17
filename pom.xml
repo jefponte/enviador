@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <version>1.0</version>
 
-    <name>Enviador</name>
-    <description>Enviador</description>
+    <name>enviador</name>
+    <description>enviador</description>
     <url>http://www.enviador.com.br</url>
 
     <properties>
@@ -112,7 +112,7 @@
         </plugins>
     </build>
     <organization>
-        <name>Enviador</name>
+        <name>enviador</name>
         <url>http://www.enviador.com.br</url>
     </organization>
 </project>
