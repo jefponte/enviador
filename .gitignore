@@ -5,3 +5,5 @@
 /bin/br/com/enviador/model/*.class
 *.class
 /target/
+
+*.exe
