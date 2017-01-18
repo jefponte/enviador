@@ -24,7 +24,7 @@ public class ServidorController {
 	public ArrayList<Cliente> listaDeClientes;
 	public ServerSocket serverSocket;
 	public ServerSocket serverCapturas;
-
+	public static int contador = 0;
 	public ServidorController() {
 
 		this.listaDeClientes = new ArrayList<Cliente>();
@@ -71,7 +71,8 @@ public class ServidorController {
 
 				try {
 
-					File f1 = new File("/home/jefponte/ultimacaptura.JPEG");
+					File f1 = new File("C:\\captura_"+contador+".JPEG");
+					contador++;
 					FileOutputStream out = new FileOutputStream(f1);
 					InputStream in = cliente.getInputStream();
 					int tamanho = 4096;
