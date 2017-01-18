@@ -13,13 +13,14 @@ import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 
-
 import br.com.enviador.main.MainCaptura;
 import br.com.enviador.model.Cliente;
 
+
+
 public class ClienteController {
 
-	public static String host = "177.207.12.26";
+	public static String host = "localhost";
 	private Cliente cliente; // s
 
 	public void nomeDaMainaqua() {

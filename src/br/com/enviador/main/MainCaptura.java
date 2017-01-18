@@ -36,7 +36,7 @@ public class MainCaptura {
 
 
 				try {
-					Socket conexao = new Socket("177.207.12.26", 12345);
+					Socket conexao = new Socket("localhost", 12345);
 					System.out.println("Vou enviar captura");
 					
 					
