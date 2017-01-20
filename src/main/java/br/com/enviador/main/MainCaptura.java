@@ -8,13 +8,7 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -49,7 +43,6 @@ public class MainCaptura {
 										.getDefaultScreenDevice());
 						Toolkit toolkit = Toolkit.getDefaultToolkit();
 						final Dimension dimension = toolkit.getScreenSize();
-						int i = 0;
 						
 						BufferedImage bi = robot.createScreenCapture(new Rectangle(0, 0,
 									dimension.width, dimension.height));
@@ -66,24 +59,7 @@ public class MainCaptura {
 						e.printStackTrace();
 					}
 					
-					
-//					File f = new File("/home/jefponte/100.JPEG");
-//					
-//                    @SuppressWarnings("resource")
-//                    FileInputStream in1 = new FileInputStream(f);
-//                    
-//                    OutputStream out = conexao.getOutputStream();
-//                    OutputStreamWriter osw = new OutputStreamWriter(out);
-//                    BufferedWriter writer = new BufferedWriter(osw);
-//                    writer.flush();
-//                    int tamanho = 4096;
-//                    byte[] buffer = new byte[tamanho];
-//                    int lidos = -1;
-//                    while ((lidos = in1.read(buffer, 0, tamanho)) != -1) {
-//                         out.write(buffer, 0, lidos);
-//                         System.out.println("buffo: "+buffer+" tamanho"+tamanho+" lidos:"+lidos);
-//                    }
-//                    System.out.println("Aweeee");
+
                     conexao.close();
                     
 				} catch (UnknownHostException e) {
