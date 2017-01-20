@@ -41,7 +41,6 @@ public class ClienteController {
 
 		Thread tentandoConexao = new Thread(new Runnable() {
 
-			@Override
 			public void run() {
 				while (true) {
 					int tentativa = 0;
