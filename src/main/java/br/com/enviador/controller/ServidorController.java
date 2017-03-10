@@ -226,18 +226,7 @@ public class ServidorController {
 		String comando = mensagem.substring(0, mensagem.indexOf('('));
 		parametros = mensagem.substring((mensagem.indexOf('(') + 1), mensagem.indexOf(')'));
 
-		if (mensagem.equals("testeJanelinha")) {
-			System.out.println("Janelinha em todos");
-			for (Cliente cliente : listaDeClientes) {
-				try {
-					cliente.getSaida().writeObject("abreJanelinha");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-		} else if (comando.equals("exec")) {
+		if (comando.equals("exec")) {
 
 			String nomeDaMaquina = parametros.substring(0, parametros.indexOf(','));
 			String strCmd = parametros.substring(parametros.indexOf(',') + 1);
